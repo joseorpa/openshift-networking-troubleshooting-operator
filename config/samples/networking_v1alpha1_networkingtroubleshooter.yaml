@@ -1,0 +1,22 @@
+apiVersion: networking.troubleshooting.openshift.io/v1alpha1
+kind: NetworkingTroubleshooter
+metadata:
+  labels:
+    app.kubernetes.io/name: openshift-networking-troubleshooting-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: networkingtroubleshooter-sample
+spec:
+  enabled: true
+  logStream:
+    namespace: "openshift-ovn-kubernetes"
+    podName: "ovn-master-5vj2s"  # Replace with actual pod name
+    containerName: "ovnkube-master"
+    follow: true
+    includeTimestamps: true
+    tailLines: 100
+  kafka:
+    enabled: false
+    brokers:
+      - "kafka-broker-1:9092"
+      - "kafka-broker-2:9092"
+    topic: "openshift-networking-logs"

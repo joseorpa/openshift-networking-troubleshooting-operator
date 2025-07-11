@@ -1,0 +1,27 @@
+# This rule is not used by the project openshift-networking-troubleshooting-operator itself.
+# It is provided to allow the cluster admin to help manage permissions for users.
+#
+# Grants full permissions ('*') over networking.troubleshooting.openshift.io.
+# This role is intended for users authorized to modify roles and bindings within the cluster,
+# enabling them to delegate specific permissions to other users or groups as needed.
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: openshift-networking-troubleshooting-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: networkingtroubleshooter-admin-role
+rules:
+- apiGroups:
+  - networking.troubleshooting.openshift.io
+  resources:
+  - networkingtroubleshooters
+  verbs:
+  - '*'
+- apiGroups:
+  - networking.troubleshooting.openshift.io
+  resources:
+  - networkingtroubleshooters/status
+  verbs:
+  - get
