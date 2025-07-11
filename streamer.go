@@ -15,7 +15,7 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/util/homedir"
 )
-
+// Add some more comments
 // main function to run the log streamer example.
 func main() {
 	// --- Kubernetes Client Setup ---
